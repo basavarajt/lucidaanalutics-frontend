@@ -1,0 +1,17 @@
+services:
+  - type: static
+    name: lucidaanalutics-frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    autoDeploy: true
+    envVars:
+      - key: VITE_API_URL
+        value: "https://lucidaanalutics-backend.onrender.com"
+      - key: VITE_APPWRITE_ENDPOINT
+        value: "https://sgp.cloud.appwrite.io/v1"
+      - key: VITE_APPWRITE_PROJECT_ID
+        value: "69f0a932000f88a5705c"
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
